@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chunk Norris Jokes</title>
+</head>
+<body>
+    <h1>Chunk Norris Jokes</h1>
+    <button type="button" onclick="getJoke()">Get Joke</button>
+    <div id="joke"></div>
+
+    <script>
+        function getJoke(){
+            //Make a API request to Chunk Norris API
+            fetch('https://api.chucknorris.io/jokes/random')
+            .then(response =>response.json())
+            .then(data =>{
+                //display the Chunk Norris Jokes
+                const jokeDiv = document.getElementById('joke');
+                jokeDiv.innerHTML = `<p>${data.value}</p>`; 
+            })
+            .catch(error=>{
+                console.log(error);
+                alert("unable to get joke");
+            });
+        }
+    </script>
+</body>
+</html>
